@@ -6,7 +6,6 @@ def string_info(string):
     tuple = (len(string), string.lower(), string.upper())
     print(tuple)
     count_calls()
-    return
 def is_contains(string,list_to_search):
     print(string in list_to_search)
     count_calls()
