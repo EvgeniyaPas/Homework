@@ -12,7 +12,17 @@ class House:
 
     def __add__(self, value):
          if isinstance(value, int):
-             return f'Название: {self.name}, количество этажей: {self.number_of_floors + value}'
+             return House(self.name, self.number_of_floors + value)
+
+    def __iadd__(self, value):
+         if isinstance(value, int):
+             self.number_of_floors += value
+         return House(self.name, self.number_of_floors)
+
+    def __radd__(self, value):
+         if isinstance(value, int):
+             self.number_of_floors = value + self.number_of_floors
+         return House(self.name, self.number_of_floors)
 
 
     def __lt__(self,other):
@@ -48,6 +58,12 @@ print(h1 == h2)
 h1 = h1 + 10
 print(h1)
 print(h1 == h2)
+
+h1 += 10 # __iadd__
+print(h1)
+
+h2 = 10 + h2 # __radd__
+print(h2)
 
 print(h1 > h2)# __gt__
 print(h1 >= h2) # __ge__
