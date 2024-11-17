@@ -10,7 +10,7 @@ class WordsFinder:
     def __str__(self):
         return f'{self.files}'
 
-    def get_all_words(self):
+    def get_all_words(self): # cловарь с названием файла и списка слов из файла в качестве значения
         all_words = {}
         keys = []
         values = []
@@ -26,26 +26,24 @@ class WordsFinder:
         all_words = dict(zip(keys, values))
         return all_words
 
-    def find(self, word):
+    def find(self, word): # cловарь с названием файла и номером первого вхождения слова text в списке слов из файла
         self.word = word
         dict_1 = {}
         for keys, values in self.get_all_words().items():
-            if self.word.lower() in values:
-                b = values.index(self.word.lower())
-                a = keys
-                print(dict(zip(a, b)))
+            if word.lower() in values:
+                dict_1[keys] = values.index(word.lower())
         return dict_1
 
-    # def count(self, word):
-    #     self.word = word
-    #     dict_1 = {}
-    #     k = 0
-    #     for keys, values in self.get_all_words().items():
-    #         if self.word.lower() in values:
-    #             k += 1
-    #             print(k)
-    #     #         dict_1 = dict(zip(a, b))
-    #     # return dict_1
+    def count(self, word): # # cловарь с названием файла и количеством вхождений слова text в список слов из файла
+        self.word = word
+        dict_2 = {}
+        k = 0
+        for keys, values in self.get_all_words().items():
+            for i in values:
+                if i == self.word.lower():
+                    k += 1
+                    dict_2[keys] = k
+        return dict_2
 
 finder2 = WordsFinder('test_file.txt')
 print(finder2.get_all_words()) # Все слова
