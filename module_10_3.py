@@ -37,10 +37,9 @@ class Bank():
         for i in range(100):
             sum = random.randint(50,500)
             self.balance += sum
-            time.sleep(1)
+            print(f'Пополнение: {sum}. Баланс: {self.balance}\n', end = '')
             if self.balance >= 500 and lock.locked():
                 lock.release()
-            print(f'Пополнение: {sum}. Баланс: {self.balance}\n', end = '')
             time.sleep(0.001)
 
     def take(self):
