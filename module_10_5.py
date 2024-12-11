@@ -52,10 +52,10 @@ def main():
     time_2 = datetime.now()
     print(time_2 - time_1, '- многопроцессорный')
 
-list_files = ['file1.txt', 'file2.txt', 'file3.txt', 'file4.txt']
 # линейный вызов
+filenames = [f'./file{number}.txt' for number in range(1, 5)]
 time_1 = datetime.now()
-for i in list_files:
+for i in filenames:
     read_info(i)
 time_2 = datetime.now()
 print(time_2 - time_1, '- линейный')
